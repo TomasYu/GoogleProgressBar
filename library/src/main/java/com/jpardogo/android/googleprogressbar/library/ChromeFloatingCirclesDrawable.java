@@ -40,7 +40,7 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
 
     // speed related
     private int acceleration = ACCELERATION_LEVEL;
-    private double distance = 0.5 * ACCELERATION_LEVEL * MID_LEVEL * MID_LEVEL;
+    private double distance = 0.5 * ACCELERATION_LEVEL * MID_LEVEL ;
     private double max_speed; // set in setAcceleration(...);
     private double offsetPercentage;
 
@@ -121,15 +121,14 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
                     colorSign = 1;
                 }
                 // from beg to mid
-                offsetPercentage = 0.5 * acceleration * temp_level * temp_level / distance;
+                offsetPercentage = 0.5 * acceleration * temp_level  / distance;
                 offset = (int)(offsetPercentage * ef_width / 2); // x and y direction offset
             }
             else {
                 // set colorSign
                 colorSign |= 2;
                 // from mid to end
-                offsetPercentage = (max_speed * temp_level
-                        - 0.5 * acceleration * temp_level * temp_level) / distance
+                offsetPercentage = (0.5 * acceleration * temp_level ) / distance
                         + 1.0;
                 offset = (int)(offsetPercentage * ef_width / 2); // x and y direction offset
             }
@@ -142,15 +141,14 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
                     colorSign |= 4;
                 }
                 // from end to mid
-                offsetPercentage = 0.5 * acceleration * temp_level * temp_level  / distance;
+                offsetPercentage = 0.5 * acceleration * temp_level   / distance;
                 offset = (int)(ef_width - offsetPercentage * ef_width / 2); // x and y direction offset
             }
             else {
                 // set colorSign
                 colorSign |= 8;
                 // from mid to beg
-                offsetPercentage = (max_speed * temp_level
-                        - 0.5 * acceleration * temp_level * temp_level) / distance
+                offsetPercentage = (0.5 * acceleration * temp_level ) / distance
                         + 1.0;
                 offsetPercentage = offsetPercentage == 1.0 ? 2.0 : offsetPercentage;
                 offset = (int)(ef_width - offsetPercentage * ef_width / 2); // x and y direction offset
@@ -241,7 +239,7 @@ public class ChromeFloatingCirclesDrawable extends Drawable implements Drawable.
 
     public void setAcceleration(int acceleration) {
         this.acceleration = acceleration;
-        distance = 0.5 * acceleration * (MID_LEVEL / acceleration) * (MID_LEVEL / acceleration);
+        distance = 0.5 * acceleration * (MID_LEVEL / acceleration) ;
         max_speed = acceleration * (MID_LEVEL / acceleration);
     }
 
