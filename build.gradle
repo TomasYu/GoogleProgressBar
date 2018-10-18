@@ -2,9 +2,15 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
+        maven { url 'gradleplugin' }
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:2.2.2'
     }
 }
 
